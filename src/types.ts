@@ -4,6 +4,7 @@ export interface UserProfile {
   name: string;
   email: string;
   plan: UserPlan;
+  userId?: string;
   hasOnboarded?: boolean;
 }
 
