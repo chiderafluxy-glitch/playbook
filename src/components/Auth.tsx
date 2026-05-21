@@ -31,7 +31,7 @@ export default function Auth({ initialMode, selectedPlan, onAuthSuccess, onNavig
         // Fallback to localStorage mode if Supabase not configured
         if (sbError.message?.includes('fetch') || sbError.message?.includes('placeholder')) {
           const plan: UserPlan = selectedPlan || "Basic";
-          onAuthSuccess(name, email, "Free");
+          onAuthSuccess(name, email, plan, undefined);
         } else {
           setError(sbError.message);
         }
@@ -39,7 +39,7 @@ export default function Auth({ initialMode, selectedPlan, onAuthSuccess, onNavig
         return;
       }
       if (data?.user) {
-        onAuthSuccess(name, email, "Free", data.user.id);
+        onAuthSuccess(name, email, selectedPlan || "Free", data.user.id);
       }
     } else {
       const { data, error: sbError } = await signIn(email, password);
@@ -60,7 +60,7 @@ export default function Auth({ initialMode, selectedPlan, onAuthSuccess, onNavig
       }
       if (data?.user) {
         // Profile + routing handled by App.tsx auth listener
-        onAuthSuccess(data.user.user_metadata?.name || email.split('@')[0], email, "Free", data.user.id);
+        onAuthSuccess(data.user.user_metadata?.name || email.split('@')[0], email, selectedPlan || "Free", data.user.id);
       }
     }
     setLoading(false);
