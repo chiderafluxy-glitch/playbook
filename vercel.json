@@ -1,8 +1,0 @@
-{
-  "routes": [
-    { "src": "/api/health", "dest": "/api/health.cjs" },
-    { "src": "/api/checkout", "dest": "/api/checkout.cjs" },
-    { "src": "/api/webhook", "dest": "/api/webhook.cjs" },
-    { "src": "/(.*)", "dest": "/dist/index.html" }
-  ]
-}
