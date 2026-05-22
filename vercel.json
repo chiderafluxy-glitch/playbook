@@ -1,5 +1,6 @@
 {
   "routes": [
+    { "src": "/api/health", "dest": "/api/health.js" },
     { "src": "/api/checkout", "dest": "/api/checkout.js" },
     { "src": "/api/webhook", "dest": "/api/webhook.js" },
     { "src": "/(.*)", "dest": "/dist/index.html" }
