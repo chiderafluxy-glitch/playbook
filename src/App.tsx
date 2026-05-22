@@ -113,17 +113,11 @@ export default function App() {
   };
 
   const handleAuthSuccess = (name: string, email: string, assignedPlan: UserPlan, userId?: string) => {
-    const freshUser: UserProfile = { name, email, plan: assignedPlan, userId };
+    const freshUser: UserProfile = { name, email, plan: assignedPlan, userId, hasOnboarded: false };
     setUser(freshUser);
     localStorage.setItem("pbook_user_session", JSON.stringify(freshUser));
-    // Free plan = no trial, go to checkout for payment
-    // Basic = 3-day trial, go to checkout to start trial
-    // Pro = no trial, go to checkout to pay immediately
-    if (assignedPlan === "Free" || assignedPlan === "Basic" || assignedPlan === "Pro") {
-      setScreen("checkout");
-    } else {
-      setScreen("onboarding");
-    }
+    // All users go straight to onboarding - no payment required
+    setScreen("onboarding");
   };
 
   const handlePaymentSuccess = (finalPlan: UserPlan) => {

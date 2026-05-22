@@ -89,8 +89,8 @@ export default function Auth({ initialMode, selectedPlan, onAuthSuccess, onNavig
 
           {selectedPlan && mode === "signup" && (
             <div className="mb-6 p-4 bg-[#edfc47] rounded-xl">
-              <p className="text-sm font-semibold">Selected plan: <span className="font-bold">{selectedPlan} — {selectedPlan === "Basic" ? "$15/mo" : "$30/mo"}</span></p>
-              <p className="text-xs mt-1 opacity-70">You'll choose payment after creating your account.</p>
+              <p className="text-sm font-semibold">Selected: <span className="font-bold">{selectedPlan}</span></p>
+              <p className="text-xs mt-1 opacity-70">Free access - no payment required.</p>
             </div>
           )}
 
