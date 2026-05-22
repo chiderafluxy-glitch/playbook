@@ -104,16 +104,7 @@ export default function LandingPage({ onNavigate, onSelectPlanAndSignup }: Landi
           >
             Features
           </button>
-          <button 
-            onClick={() => {
-              setActiveView('home');
-              setTimeout(() => handleSmoothScroll('pricing'), 100);
-            }} 
-            className="text-sm font-semibold text-[#4d4d4d] hover:text-black transition-colors cursor-pointer"
-            id="nav-pricing"
-          >
-            Pricing
-          </button>
+
 
           <button 
             onClick={() => {
@@ -592,126 +583,65 @@ export default function LandingPage({ onNavigate, onSelectPlanAndSignup }: Landi
             </div>
           </section>
 
-          {/* Section 5 - Pricing */}
+          {/* Section 5 - Free Access */}
           <section id="pricing" className="py-20 md:py-24 bg-white">
-            <div className="max-w-[1000px] mx-auto px-6">
-              <div className="text-center mb-16">
+            <div className="max-w-[600px] mx-auto px-6">
+              <div className="text-center mb-12">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#4d4d4d] border-b-2 border-[#edfc47] pb-1 font-mono">
-                  FLEXIBLE BUILDER PLANS
+                  ALWAYS FREE
                 </span>
                 <h2 className="text-3xl md:text-4xl font-roobert font-extrabold text-black mt-4" id="pricing-header">
-                  Simple Pricing. No Surprises.
+                  No Payment Required. Ever.
                 </h2>
                 <p className="text-[#4d4d4d] text-sm mt-4 font-medium" id="pricing-subheader">
-                  Choose the scope of copies you wish to launch. Upgrade or cancel inside settings anytime.
+                  Full access to all tools, no credit card needed.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-stretch font-sans">
-                {/* Basic Plan */}
-                <div className="bg-white border border-[#cccccc] shadow-sm hover:border-black transition-all rounded-xl p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="flex justify-between items-center mb-6">
-                      <h3 className="font-roobert font-extrabold text-2xl text-black">Basic Plan</h3>
-                      <span className="text-[9px] font-bold font-mono uppercase tracking-wider text-slate bg-[#f7f6f5] border border-[#cccccc] px-2.5 py-1 rounded">
-                        Core Loops
-                      </span>
-                    </div>
-                    
-                    <div className="mb-6 flex items-baseline">
-                      <span className="font-roobert font-extrabold text-5xl text-black">$15</span>
-                      <span className="text-[#4d4d4d] text-sm font-semibold ml-1">/ month</span>
-                    </div>
-
-                    <p className="text-xs text-[#4d4d4d] mb-8 leading-relaxed font-sans font-medium">
-                      Ideal for builders implementing high-converting outbound lead architectures first.
-                    </p>
-
-                    <div className="space-y-4 border-t border-[#cccccc]/40 pt-6 mb-8 font-sans">
-                      <p className="text-[10px] font-bold text-black uppercase tracking-wider font-mono">INCLUDED LOOPS:</p>
-                      <ul className="space-y-3.5 text-xs text-black">
-                        {[
-                          "Russell Brunson's Lead Funnel copy blueprints",
-                          "Alex Hormozi's Dream 100 Partner schemas",
-                          "GaryVee's 3-Jabs 1-Hook email loops",
-                          "Up to 20 AI generations per tool monthly",
-                          "Standard email and builder support access"
-                        ].map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="w-4 h-4 rounded bg-[#edfc47] border border-black flex items-center justify-center shrink-0 text-black text-[9px] font-bold mt-0.5">
-                              ✓
-                            </span>
-                            <span className="font-sans font-medium text-[#4d4d4d] text-[13px]">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <button 
-                    onClick={() => onSelectPlanAndSignup('Basic')} 
-                    className="w-full bg-transparent border border-black hover:bg-[#f7f6f5] text-black font-bold text-sm py-3 px-6 rounded-[6px] text-center cursor-pointer transition-colors"
-                    id="pricing-btn-basic"
-                  >
-                    Select Basic Plan
-                  </button>
+              <div className="bg-white border-2 border-black shadow-md rounded-xl p-8 font-sans">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="font-roobert font-extrabold text-2xl text-black">Pro Access</h3>
+                  <div className="w-2.5 h-2.5 rounded-full bg-[#edfc47] border border-black animate-pulse" />
+                </div>
+                
+                <div className="mb-6 flex items-baseline">
+                  <span className="font-roobert font-extrabold text-5xl text-black">$0</span>
+                  <span className="text-[#4d4d4d] text-sm font-semibold ml-1">/ month</span>
                 </div>
 
-                {/* Pro Plan */}
-                <div className="bg-white border-2 border-black shadow-md rounded-xl p-8 flex flex-col justify-between relative overflow-hidden">
-                  <div className="absolute top-0 right-0 bg-[#000000] text-[#edfc47] border-b border-l border-black text-[8px] font-bold py-1.5 px-4 rounded-bl-[10px] uppercase tracking-wider font-mono">
-                    RECOMMENDED
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-center mb-6">
-                      <h3 className="font-roobert font-extrabold text-2xl text-black">Pro Plan</h3>
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#edfc47] border border-black animate-pulse" />
-                    </div>
-                    
-                    <div className="mb-6 flex items-baseline">
-                      <span className="font-roobert font-extrabold text-5xl text-black">$30</span>
-                      <span className="text-[#4d4d4d] text-sm font-semibold ml-1">/ month</span>
-                    </div>
-
-                    <p className="text-xs text-[#4d4d4d] mb-8 leading-relaxed font-sans font-medium">
-                      Unlock Justin Welsh carousels, scorecards, and post-purchase high-converters.
-                    </p>
-
-                    <div className="space-y-4 border-t border-[#cccccc]/40 pt-6 mb-8">
-                      <p className="text-[10px] font-bold text-black uppercase tracking-wider font-mono">PRO SUPERPOWERS:</p>
-                      <ul className="space-y-3.5 text-xs text-black">
-                        {[
-                          "Everything included in standard package",
-                          "Justin Welsh's LinkedIn Carousel generator",
-                          "Perry Marshall's 80/20 analytic matrix scorecard",
-                          "Ryan Deiss's Tripwire Upsell offer writer",
-                          "Generous 100 generations per tool monthly",
-                          "Priority fast-track operational builder support"
-                        ].map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="w-4 h-4 bg-[#edfc47] border border-black flex items-center justify-center shrink-0 text-black text-[9px] font-bold mt-0.5 rounded">
-                              ✓
-                            </span>
-                            <span className={`font-sans text-[13px] ${item === "Everything included in standard package" ? "font-bold text-black" : "text-[#4d4d4d]"}`}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <button 
-                    onClick={() => onSelectPlanAndSignup('Pro')} 
-                    className="w-full bg-black hover:bg-zinc-900 border border-black text-white font-bold text-sm py-3 px-6 rounded-[6px] text-center cursor-pointer transition-colors"
-                    id="pricing-btn-pro"
-                  >
-                    Select Pro Plan
-                  </button>
+                <div className="space-y-4 border-t border-[#cccccc]/40 pt-6 mb-8">
+                  <ul className="space-y-3.5 text-xs text-black">
+                    {[
+                      "Russell Brunson's Lead Funnel copy blueprints",
+                      "Alex Hormozi's Dream 100 Partner schemas",
+                      "GaryVee's 3-Jabs 1-Hook email loops",
+                      "Justin Welsh's LinkedIn Carousel generator",
+                      "Perry Marshall's 80/20 analytic matrix scorecard",
+                      "Ryan Deiss's Tripwire Upsell offer writer",
+                      "100 AI generations per tool monthly",
+                      "Email support access"
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="w-4 h-4 bg-[#edfc47] border border-black flex items-center justify-center shrink-0 text-black text-[9px] font-bold mt-0.5 rounded">
+                          ✓
+                        </span>
+                        <span className="font-sans text-[13px] text-[#4d4d4d]">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+
+                <button 
+                  onClick={() => onNavigate('signup')} 
+                  className="w-full bg-black hover:bg-zinc-900 border border-black text-white font-bold text-sm py-3 px-6 rounded-[6px] text-center cursor-pointer transition-colors"
+                  id="pricing-btn-pro"
+                >
+                  Start for free
+                </button>
               </div>
 
               <p className="text-center text-xs text-[#4d4d4d] mt-8 font-mono uppercase tracking-wider" id="pricing-footnote">
-                Basic package includes a 3-day free trial sandbox. No credit card required.
+                No credit card required. No trial. Just free.
               </p>
             </div>
           </section>
@@ -729,7 +659,28 @@ export default function LandingPage({ onNavigate, onSelectPlanAndSignup }: Landi
               </div>
 
               <div className="space-y-4">
-                {faqs.map((faq, i) => (
+                {[
+                  {
+                    q: "Do I need any marketing experience?",
+                    a: "No. You just enter your niche and offer and the system does the rest. Everything is copy/paste ready, formatted using exact playbook guidelines from leading conversion experts."
+                  },
+                  {
+                    q: "What tools do I need to connect?",
+                    a: "Nothing is required. You can use the outputs in any email tool, social platform, or website builder you already use. We provide clean copy assets and downloadable data schemas."
+                  },
+                  {
+                    q: "Is this really free?",
+                    a: "Yes, completely free. No credit card, no trial, no payment required. All tools are available from day one."
+                  },
+                  {
+                    q: "What's included in the free access?",
+                    a: "Full access to all tools including Russell Brunson lead magnets, Hormozi Dream 100 lists, GaryVee email sequences, Justin Welsh LinkedIn content, Perry Marshall scorecards, and Ryan Deiss tripwire offers."
+                  },
+                  {
+                    q: "How many leads can I get with this?",
+                    a: "That depends on your niche and how many partners you reach out to. Users who complete the full Dream 100 outreach typically see results within 2–4 weeks by leveraging pre-existing audience channels."
+                  }
+                ].map((faq, i) => (
                   <div 
                     key={i} 
                     className="bg-white border border-[#cccccc] rounded-xl overflow-hidden transition-all duration-300 hover:border-black"
@@ -782,11 +733,11 @@ export default function LandingPage({ onNavigate, onSelectPlanAndSignup }: Landi
                 className="bg-black hover:bg-zinc-900 border border-black text-white font-bold text-sm py-3.5 px-8 rounded-[6px] shadow-sm transition-all inline-flex items-center gap-3 cursor-pointer"
                 id="cta-btn-signup"
               >
-                <span>Activate my sandbox</span>
+                <span>Get started free</span>
                 <ArrowRight className="w-4 h-4 text-[#edfc47]" />
               </button>
               <p className="text-[11px] text-[#4d4d4d] mt-4 font-mono uppercase tracking-wider">
-                Try 3 days completely free. Cancel in one click.
+                Free forever. No credit card required.
               </p>
             </div>
           </section>

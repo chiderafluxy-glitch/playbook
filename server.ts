@@ -240,11 +240,13 @@ async function startServer() {
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({ server: { middlewareMode: true }, appType: "spa" });
     app.use(vite.middlewares);
+    app.listen(PORT, () => console.log(`🚀 Playbook running at http://localhost:${PORT}`));
   } else {
     app.use(express.static(path.resolve("dist/client")));
     app.get("*", (_req, res) => res.sendFile(path.resolve("dist/client/index.html")));
   }
-  app.listen(PORT, () => console.log(`🚀 Playbook running at http://localhost:${PORT}`));
 }
 
 startServer();
+
+export default app;

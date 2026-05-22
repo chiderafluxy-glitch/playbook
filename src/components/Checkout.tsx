@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Check, Zap } from "lucide-react";
 import { UserPlan, UserProfile } from "../types";
-import { redirectToCheckout } from "../lib/stripe";
 
 interface CheckoutProps {
   currentPlan: UserPlan;
@@ -42,22 +41,23 @@ export default function Checkout({ currentPlan, onPaymentSuccess, onNavigateHome
     setError("");
     setLoading(true);
     try {
-      if (user?.email) {
-        // Try real Stripe checkout
-        await redirectToCheckout(
-          selected.toLowerCase() as 'basic' | 'pro',
-          user?.email || '',
-          user?.email || ''
-        );
-        // If redirect happens, code below won't run
+      const response = await fetch('/api/create-checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          plan: selected.toLowerCase(),
+          userId: user?.userId || user?.email || '',
+          email: user?.email || ''
+        })
+      });
+      const data = await response.json();
+      if (data.url) {
+        window.location.href = data.url;
       } else {
-        throw new Error("No user session found");
+        setError(data.error || 'Payment setup failed. Please try again.');
       }
     } catch (err: any) {
-      // Fallback: simulate payment for demo/dev mode
-      console.warn("Stripe not configured — simulating payment:", err.message);
-      await new Promise(r => setTimeout(r, 1500));
-      onPaymentSuccess(selected);
+      setError('Could not connect to payment service. Please try again.');
     }
     setLoading(false);
   };

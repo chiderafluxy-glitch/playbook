@@ -113,11 +113,11 @@ export default function App() {
   };
 
   const handleAuthSuccess = (name: string, email: string, assignedPlan: UserPlan, userId?: string) => {
-    const freshUser: UserProfile = { name, email, plan: assignedPlan };
+    const freshUser: UserProfile = { name, email, plan: assignedPlan, userId, hasOnboarded: false };
     setUser(freshUser);
     localStorage.setItem("pbook_user_session", JSON.stringify(freshUser));
-    if (assignedPlan === "Free") setScreen("checkout");
-    else setScreen("onboarding");
+    // All users go straight to onboarding - no payment required
+    setScreen("onboarding");
   };
 
   const handlePaymentSuccess = (finalPlan: UserPlan) => {
